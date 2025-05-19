@@ -30,7 +30,7 @@ ax.set_ylabel("Total Cases")
 ax.set_xlabel("Date")
 st.pyplot(fig)
 
-st.subheader(" 📍 Hasil Clustering Wilayah")
+st.subheader(" 📍 Hasil Clustering Wilayah : ")
 cluster_features = df.groupby("Location")[['Total Cases', 'Total Deaths', 'Total Recovered', 'Population Density']].mean()
 
 scaler = StandardScaler()
@@ -73,5 +73,5 @@ fig_map = px.scatter_mapbox(
 )
 st.plotly_chart(fig_map, use_container_width=True)
 
-st.subheader("Tabel Ringkasan Risiko Wilayah Berdasarkan Klaster")
+st.subheader(" ⊞ Tabel Ringkasan Risiko Wilayah Berdasarkan Klaster")
 st.dataframe(cluster_features.sort_values("Cluster"))
