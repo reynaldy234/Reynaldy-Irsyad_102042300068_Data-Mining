@@ -6,7 +6,7 @@ from sklearn.cluster import KMeans
 import plotly.express as px
 
 st.set_page_config(page_title="COVID-19 Clustering Dashboard", layout="wide")
-st.title("Clustering Dashboard COVID-19")
+st.title("📊 Dashboard Analisis Klaster COVID-19 Indonesia")
 
 @st.cache_data
 def load_data():
