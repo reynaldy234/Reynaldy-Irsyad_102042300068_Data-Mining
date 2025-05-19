@@ -22,7 +22,7 @@ unique_locations = df['Location'].unique()
 selected_location = st.sidebar.selectbox("Pilih Lokasi", unique_locations)
 location_data = df[df['Location'] == selected_location]
 
-st.subheader(f"Tren Kasus Harian di {selected_location}")
+st.subheader(f"Grafik  Kasus Harian di {selected_location}")
 fig, ax = plt.subplots(figsize=(10,4))
 daily_cases = location_data.groupby("Date").sum()['Total Cases']
 daily_cases.plot(ax=ax, color='#0000FF')
@@ -30,7 +30,7 @@ ax.set_ylabel("Total Cases")
 ax.set_xlabel("Date")
 st.pyplot(fig)
 
-st.subheader("Hasil Clustering Wilayah")
+st.subheader(" 📍 Hasil Clustering Wilayah")
 cluster_features = df.groupby("Location")[['Total Cases', 'Total Deaths', 'Total Recovered', 'Population Density']].mean()
 
 scaler = StandardScaler()
@@ -60,7 +60,7 @@ kordinat = pd.DataFrame({
 
 map_df = cluster_features.reset_index().merge(kordinat, on='Location')
 
-st.subheader("Peta Interaktif Clustering Wilayah")
+st.subheader(" 🗺 Pemetaan Klaster COVID-19 Tiap Wilayah")
 fig_map = px.scatter_mapbox(
     map_df,
     lat="lat", lon="lon",
@@ -73,5 +73,5 @@ fig_map = px.scatter_mapbox(
 )
 st.plotly_chart(fig_map, use_container_width=True)
 
-st.subheader("Ringkasan Risiko Wilayah Berdasarkan Cluster")
+st.subheader("Tabel Ringkasan Risiko Wilayah Berdasarkan Klaster")
 st.dataframe(cluster_features.sort_values("Cluster"))
