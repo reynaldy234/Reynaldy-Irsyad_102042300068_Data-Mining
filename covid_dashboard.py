@@ -25,7 +25,7 @@ location_data = df[df['Location'] == selected_location]
 st.subheader(f"Tren Kasus Harian di {selected_location}")
 fig, ax = plt.subplots(figsize=(10,4))
 daily_cases = location_data.groupby("Date").sum()['Total Cases']
-daily_cases.plot(ax=ax, color='cyan')
+daily_cases.plot(ax=ax, color='#00FFFF')
 ax.set_ylabel("Total Cases")
 ax.set_xlabel("Date")
 st.pyplot(fig)
